@@ -2,6 +2,8 @@ const CACHE = "noobi-ast-dashboard-v2";
 const ASSETS = [
   "./",
   "./index.html",
+  "./styles.css",
+  "./app.js",
   "./tasks.json",
   "./manifest.json",
   "./Noobi%20Banner.jpg"
@@ -24,7 +26,7 @@ self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);
 
-  // Network-first for tasks.json (so updates come through), fallback to cache
+  // Network-first for tasks.json
   if (url.pathname.endsWith("/tasks.json") || url.pathname.endsWith("tasks.json")) {
     event.respondWith(
       fetch(req).then((res) => {
