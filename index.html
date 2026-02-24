@@ -439,28 +439,47 @@
     }
     .bottomnav__inner{
       max-width:var(--max);margin:0 auto;
-      display:grid;grid-template-columns:repeat(6,1fr);gap:5px;
+      display:flex;gap:2px;align-items:stretch;
     }
     .tab{
+      flex:1;min-width:0;
       border:1px solid transparent;background:transparent;color:var(--muted);
-      border-radius:14px;padding:7px 4px;min-height:52px;
-      display:flex;flex-direction:column;gap:4px;
+      border-radius:12px;padding:5px 2px 4px;min-height:50px;
+      display:flex;flex-direction:column;gap:3px;
       align-items:center;justify-content:center;cursor:pointer;
       transition:background .15s,border-color .15s,color .15s;
-      font-size:10px;
+      font-size:9.5px;
     }
     .tab.active{
       color:var(--text);
       border-color:rgba(52,212,179,.35);
       background:rgba(52,212,179,.08);
     }
-    .tab svg{ width:18px;height:18px;fill:currentColor }
-    .tab span{ font-size:10px;letter-spacing:.02em }
+    .tab svg{ width:17px;height:17px;fill:currentColor;flex-shrink:0 }
+    .tab span{ font-size:9px;letter-spacing:.01em;white-space:nowrap;overflow:hidden;width:100%;text-align:center }
+    /* AI tab highlight */
+    .tab--ai.active{ background:rgba(52,212,179,.12);border-color:rgba(52,212,179,.45) }
+    .tab--ai.active span{ color:var(--accent) }
+    .tab--ai.active svg{ filter:drop-shadow(0 0 5px rgba(52,212,179,.7)) }
+    /* Pulse indicator dot */
+    .ai-nav-dot {
+      position: absolute; top: 6px; right: 6px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent);
+      animation: ai-pulse 2.5s ease-in-out infinite;
+    }
+    .tab--ai { position: relative; }
+    @keyframes ai-pulse {
+      0%, 100% { opacity: .9; transform: scale(1); }
+      50% { opacity: .3; transform: scale(.6); }
+    }
 
     /* ── FAB ─────────────────────────────────────────── */
     .fab{
-      position:fixed;right:16px;bottom:88px;
-      width:58px;height:58px;border-radius:20px;
+      position:fixed;right:16px;
+      /* Default: sits above nav with comfortable clearance */
+      bottom:calc(var(--nav-h,66px) + 10px);
+      width:52px;height:52px;border-radius:18px;
       border:1px solid rgba(52,212,179,.6);
       background:rgba(52,212,179,.15);
       color:var(--text);box-shadow:0 8px 24px rgba(52,212,179,.25),var(--shadow);
@@ -468,7 +487,7 @@
       display:flex;align-items:center;justify-content:center;
       transition:transform .15s,box-shadow .15s;
     }
-    .fab svg{ width:26px;height:26px;fill:currentColor }
+    .fab svg{ width:24px;height:24px;fill:currentColor }
     .fab:hover{ box-shadow:0 10px 28px rgba(52,212,179,.35),var(--shadow) }
     .fab:active{ transform:scale(.97) }
 
@@ -552,18 +571,136 @@
     @media(min-width:840px){
       .bottomnav{ left:50%;transform:translateX(-50%);max-width:var(--max);
         border-left:1px solid var(--line);border-right:1px solid var(--line) }
-      .fab{ right:calc(50% - 430px + 16px) }
+      .fab{ right:calc(50% - 490px + 16px); bottom:96px; width:56px; height:56px; }
+      .tab{ font-size:10.5px; gap:4px; }
+      .tab svg{ width:18px; height:18px; }
+      .tab span{ font-size:10px; }
     }
+
+    /* ══════════════════════════════════════════════════════
+       MOBILE — Clean single source, no conflicts
+    ══════════════════════════════════════════════════════ */
+
+    /* Bottom nav & body clearance */
+    .bottomnav {
+      padding: 6px 8px calc(8px + env(safe-area-inset-bottom, 0px));
+    }
+    body {
+      padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    }
+    /* Toast above nav */
+    .toast {
+      bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+      left: 12px; right: 12px;
+    }
+
+    @media (max-width: 599px) {
+      /* ── Header ── */
+      .hero__inner {
+        padding: calc(env(safe-area-inset-top, 0px) + 8px) 12px 8px;
+      }
+      .brand__title { font-size: 14px; gap: 6px; }
+      .brand__logo  { font-size: 9.5px; padding: 3px 8px; }
+      .brand__sub   { font-size: 10px; }
+      .brand__avatar{ width: 28px; height: 28px; }
+      .iconbtn      { width: 38px; height: 38px; border-radius: 10px; }
+
+      /* Inbox */
+      .inbox { margin-top: 7px; padding: 8px 12px; border-radius: 12px; }
+      .inbox input { font-size: 15px; }
+
+      /* Filter bar — horizontal scroll, no wrap */
+      .filterbar__inner {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 7px 12px 9px;
+        gap: 6px;
+      }
+      .filterbar__inner::-webkit-scrollbar { display: none; }
+      .sel   { min-width: 96px; flex-shrink: 0; height: 33px; font-size: 12px; }
+      .search{ min-width: 120px; flex-shrink: 0; height: 33px; font-size: 14px; }
+
+      /* Summary cards */
+      .main { padding: 10px 12px; }
+      .summary { gap: 7px; }
+      .sumcard { padding: 9px 8px 8px; }
+      .sumcard .lbl { font-size: 9px; }
+      .sumcard .val { font-size: 18px; }
+
+      /* Task cards */
+      .card { border-radius: 18px; padding: 11px 11px 10px; }
+
+      /* Sheets */
+      .sheet { max-height: 94vh; border-radius: 24px 24px 0 0; }
+      .sheetBody { padding: 12px; }
+      .grid2 { grid-template-columns: 1fr; gap: 0; }
+      .field input, .field select, .field textarea { font-size: 16px; border-radius: 12px; }
+      .btn { height: 44px; font-size: 13px; border-radius: 14px; }
+
+      /* ── AI view on mobile ── */
+      .ai-view { padding: 12px 12px 110px; gap: 11px; }
+
+      .ai-keybar { padding: 12px; border-radius: 16px; }
+      .ai-keybar__label { font-size: 13px; }
+      .ai-keybar__field { flex-direction: column; gap: 8px; }
+      .ai-keybtn { width: 100%; padding: 13px; font-size: 14px; border-radius: 12px; }
+
+      .ai-input-area { padding: 14px 12px; border-radius: 18px; gap: 10px; }
+      .ai-input-heading { font-size: 13.5px; }
+      .ai-textarea { font-size: 15px; border-radius: 14px; padding: 11px 12px; min-height: 110px; }
+
+      .ai-examples {
+        flex-wrap: nowrap; overflow-x: auto;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        padding-bottom: 2px; gap: 6px;
+      }
+      .ai-examples::-webkit-scrollbar { display: none; }
+      .ai-ex-label { display: none; }
+      .ai-ex { flex-shrink: 0; font-size: 12px; padding: 6px 13px; }
+
+      .ai-actions-row { flex-direction: column; gap: 8px; align-items: stretch; }
+      .ai-model-note  { text-align: center; font-size: 11px; order: 2; }
+      .ai-send-btn    { order: 1; width: 100%; justify-content: center; padding: 14px 20px; font-size: 15px; border-radius: 14px; }
+
+      .ai-status { padding: 16px; border-radius: 16px; }
+
+      .ai-ops-area  { border-radius: 18px; }
+      .ai-ops-header { padding: 13px 12px; flex-direction: column; gap: 8px; }
+      .ai-ops-header-btns { align-self: flex-start; }
+      .ai-op-card { padding: 12px; gap: 10px; }
+      .ai-op-card__title { font-size: 13px; }
+
+      .ai-apply-bar {
+        flex-direction: column; gap: 10px;
+        align-items: stretch; padding: 12px 12px calc(12px + env(safe-area-inset-bottom,0px));
+      }
+      .ai-apply-btns { flex-direction: row-reverse; justify-content: space-between; }
+      .ai-apply-btn  { flex: 1; justify-content: center; padding: 13px 16px; font-size: 14px; border-radius: 12px; }
+
+      .ai-history-batch { border-radius: 14px; padding: 10px 12px; }
+    }
+
   
     /* NOOBI BUILDS MASCOT & BRANDING */
-    .nb-mascot-wrap {
-      position: fixed; bottom: 74px; right: 14px; z-index: 200;
-      width: 56px; height: 56px; cursor: pointer;
-      filter: drop-shadow(0 0 8px rgba(52,212,179,0.5));
-      animation: mascot-idle 4s ease-in-out infinite;
-      transition: transform 0.2s, filter 0.2s;
+    /* Mobile: mascot lives only in header avatar — no floating button */
+    .nb-mascot-wrap { display: none; }
+    /* Desktop (≥ 640px): show floating mascot on LEFT side, away from FAB */
+    @media (min-width: 640px) {
+      .nb-mascot-wrap {
+        display: block;
+        position: fixed; bottom: 80px; left: 16px; z-index: 200;
+        width: 54px; height: 54px; cursor: pointer;
+        filter: drop-shadow(0 0 8px rgba(52,212,179,0.5));
+        animation: mascot-idle 4s ease-in-out infinite;
+        transition: transform 0.2s, filter 0.2s;
+      }
+      .nb-mascot-wrap:hover { transform: scale(1.12) rotate(-5deg) !important; filter: drop-shadow(0 0 18px rgba(52,212,179,0.9)); animation: none; }
     }
-    .nb-mascot-wrap:hover { transform: scale(1.12) rotate(-5deg) !important; filter: drop-shadow(0 0 18px rgba(52,212,179,0.9)); animation: none; }
+    @media (min-width: 840px) {
+      .nb-mascot-wrap { left: calc(50% - 490px + 16px); }
+    }
     .nb-mascot-wrap img { width:100%; height:100%; object-fit:cover; object-position:90% center; border-radius:50%; border:2px solid rgba(52,212,179,0.5); }
     @keyframes mascot-idle { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
     .nb-modal { display:none; position:fixed; inset:0; z-index:9999; background:rgba(7,12,24,0.88); backdrop-filter:blur(14px); align-items:center; justify-content:center; }
@@ -959,7 +1096,7 @@
     <button class="tab"        data-view="upcoming"                    ><svg><use href="#i-up"></use></svg><span>Upcoming</span></button>
     <button class="tab"        data-view="completed"                   ><svg><use href="#i-done"></use></svg><span>Done</span></button>
     <button class="tab"        data-view="pillars"                     ><svg><use href="#i-pillars"></use></svg><span>Pillars</span></button>
-    <button class="tab tab--ai"   data-view="ai"                         ><svg><use href="#i-spark"></use></svg><span>Claude AI</span></button>
+    <button class="tab tab--ai"   data-view="ai"                         ><svg><use href="#i-spark"></use></svg><span>Claude AI</span><span class="ai-nav-dot" aria-hidden="true"></span></button>
   </div>
 </nav>
 
