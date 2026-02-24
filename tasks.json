@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "version": "2026.02.24-01",
+    "last_updated": "2026-02-24",
+    "timezone": "Africa/Johannesburg",
+    "structure": "pillars: RR, ALUM, TRAIN, OPS, STRAT, BUD"
+  },
+  "owners": [
+    { "owner_id": "MK", "name": "Programme Head" },
+    { "owner_id": "FS", "name": "Fadia Samuels (Admin & M&E Support)" },
+    { "owner_id": "TN", "name": "Thami (Coordinator)" },
+    { "owner_id": "TAT", "name": "Tatenda (Attorney)" },
+    { "owner_id": "DAN", "name": "Dani (Senior Attorney)" },
+    { "owner_id": "TG", "name": "TG (Senior Attorney)" }
+  ],
+  "recurrence_rules": [
+    {
+      "id": "REC-001",
+      "title": "Weekly AS&T Check-in",
+      "pillar": "OPS",
+      "owner_id": "MK",
+      "frequency": "WEEKLY",
+      "day_of_week": "MONDAY",
+      "notes": "Editable weekly internal coordination meeting."
+    },
+    {
+      "id": "REC-002",
+      "title": "Bi-Weekly Leadership Development 1:1s",
+      "pillar": "STRAT",
+      "owner_id": "MK",
+      "frequency": "BIWEEKLY",
+      "day_of_week": "TUESDAY",
+      "notes": "Protected leadership development sessions. No operational bookings."
+    },
+    {
+      "id": "REC-003",
+      "title": "Monthly Programme Review",
+      "pillar": "STRAT",
+      "owner_id": "MK",
+      "frequency": "MONTHLY",
+      "notes": "Review pillar progress, risks, delegation."
+    },
+    {
+      "id": "REC-004",
+      "title": "Monthly Budget Monitoring Check",
+      "pillar": "BUD",
+      "owner_id": "MK",
+      "frequency": "MONTHLY",
+      "notes": "Review burn rate vs AS&T FY27 sheet."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "RR-001",
+      "title": "Develop 2026 R&R Implementation Plan",
+      "pillar": "RR",
+      "owner_id": "MK",
+      "support_owner_ids": ["TN"],
+      "start_date": "2026-03-01",
+      "due_date": "2026-03-31",
+      "dependencies": [],
+      "donor": { "stream": "RR", "notes": "HHCT primary; 11th Hour aligned. Ceiling applies." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null },
+      "notes": "Strategic blueprint including curriculum, logistics, and sequencing."
+    },
+    {
+      "id": "RR-002",
+      "title": "Publish R&R 2026 Call for Nominations",
+      "pillar": "RR",
+      "owner_id": "MK",
+      "support_owner_ids": ["TN", "FS"],
+      "start_date": "2026-04-15",
+      "due_date": "2026-05-15",
+      "dependencies": ["RR-001"],
+      "donor": { "stream": "RR", "notes": "Aligned to HHCT Outcome 2 relaunch objective." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    },
+    {
+      "id": "RR-003",
+      "title": "Design R&R Participant Selection Framework",
+      "pillar": "RR",
+      "owner_id": "TN",
+      "support_owner_ids": ["MK"],
+      "start_date": "2026-05-01",
+      "due_date": "2026-05-20",
+      "dependencies": ["RR-002"],
+      "donor": { "stream": "RR", "notes": "Must align with donor diversity and inclusion outcomes." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    },
+    {
+      "id": "RR-004",
+      "title": "Shortlist R&R 2026 Applicants",
+      "pillar": "RR",
+      "owner_id": "TN",
+      "support_owner_ids": ["MK"],
+      "start_date": "2026-06-01",
+      "due_date": "2026-06-20",
+      "dependencies": ["RR-003"],
+      "donor": { "stream": "RR", "notes": "Selection must be documented for donor reporting." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    },
+    {
+      "id": "RR-005",
+      "title": "Deliver R&R 2026 Course (Event)",
+      "pillar": "RR",
+      "owner_id": "MK",
+      "support_owner_ids": ["TN", "TAT", "DAN", "TG", "FS"],
+      "start_date": "2026-09-01",
+      "due_date": "2026-09-30",
+      "dependencies": ["RR-004"],
+      "type": "event",
+      "donor": { "stream": "RR", "notes": "Core HHCT funded flagship." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    },
+    {
+      "id": "ALUM-001",
+      "title": "Convene Alumni Network Gathering (Event)",
+      "pillar": "ALUM",
+      "owner_id": "MK",
+      "support_owner_ids": ["TN", "FS"],
+      "start_date": "2026-02-01",
+      "due_date": "2026-02-28",
+      "dependencies": [],
+      "type": "event",
+      "donor": { "stream": "RR", "notes": "Covered under alumni strengthening objective." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    },
+    {
+      "id": "ALUM-002",
+      "title": "Commission 3 Alumni Case Studies",
+      "pillar": "ALUM",
+      "owner_id": "MK",
+      "support_owner_ids": ["TN"],
+      "start_date": "2026-04-01",
+      "due_date": "2026-08-31",
+      "dependencies": ["ALUM-001"],
+      "donor": { "stream": "RR", "notes": "Supports repository objective in HHCT MOU." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    },
+    {
+      "id": "TRAIN-001",
+      "title": "Deliver High-Impact Strategic Workshop",
+      "pillar": "TRAIN",
+      "owner_id": "MK",
+      "support_owner_ids": ["TAT", "DAN"],
+      "start_date": "2026-06-01",
+      "due_date": "2026-07-31",
+      "dependencies": [],
+      "donor": { "stream": "None", "notes": "May align to live litigation priorities." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    },
+    {
+      "id": "OPS-001",
+      "title": "Monthly Donor Reporting - HHCT",
+      "pillar": "OPS",
+      "owner_id": "MK",
+      "support_owner_ids": ["FS"],
+      "start_date": "2026-06-01",
+      "due_date": "2026-11-30",
+      "dependencies": [],
+      "donor": { "stream": "RR", "notes": "Annual narrative and financial compliance." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    },
+    {
+      "id": "STRAT-001",
+      "title": "Draft 2027-2030 R&R Growth Strategy",
+      "pillar": "STRAT",
+      "owner_id": "MK",
+      "support_owner_ids": ["TN"],
+      "start_date": "2026-10-01",
+      "due_date": "2026-11-30",
+      "dependencies": ["RR-005"],
+      "donor": { "stream": "RR", "notes": "Align to HHCT multi-year structure." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    },
+    {
+      "id": "BUD-001",
+      "title": "Quarterly Budget Variance Review",
+      "pillar": "BUD",
+      "owner_id": "MK",
+      "support_owner_ids": ["FS"],
+      "start_date": "2026-03-31",
+      "due_date": "2026-12-31",
+      "dependencies": [],
+      "donor": { "stream": "Mixed", "notes": "Covers RR and SADF/11th Hour streams." },
+      "budget": { "sheet": "AS&T FY27", "amount_zar": null }
+    }
+  ]
+}

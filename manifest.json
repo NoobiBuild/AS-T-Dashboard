@@ -1,0 +1,36 @@
+{
+  "name": "AS&T Task Dashboard",
+  "short_name": "AS&T Tasks",
+  "description": "NoobiBuilds · Centre for Environmental Rights AS&T Programme Task Manager",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070c18",
+  "theme_color": "#070c18",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='40' fill='%23070c18'/%3E%3Crect width='192' height='192' rx='40' fill='url(%23g)'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2334d4b3' stop-opacity='.25'/%3E%3Cstop offset='1' stop-color='%2360a5fa' stop-opacity='.10'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='%2334d4b3' d='M56 56h80v12H56zm0 34h80v12H56zm0 34h50v12H56z'/%3E%3Ccircle cx='148' cy='136' r='20' fill='none' stroke='%2334d4b3' stroke-width='8'/%3E%3Cpath fill='%2334d4b3' d='M144 128h8v6h-8zm0 10h8v8h-8z'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%23070c18'/%3E%3Crect width='512' height='512' rx='100' fill='url(%23g)'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2334d4b3' stop-opacity='.25'/%3E%3Cstop offset='1' stop-color='%2360a5fa' stop-opacity='.10'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='%2334d4b3' d='M140 148h232v32H140zm0 96h232v32H140zm0 96h145v32H140z'/%3E%3Ccircle cx='396' cy='368' r='56' fill='none' stroke='%2334d4b3' stroke-width='22'/%3E%3Cpath fill='%2334d4b3' d='M384 344h24v18h-24zm0 30h24v22h-24z'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Today's Tasks",
+      "short_name": "Today",
+      "description": "View today's tasks",
+      "url": "./index.html"
+    },
+    {
+      "name": "Add Task",
+      "short_name": "Add",
+      "description": "Quick add a new task",
+      "url": "./index.html"
+    }
+  ]
+}
